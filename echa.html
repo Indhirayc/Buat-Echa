@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Ucapan Happy Birthday Echa</title>
+  <meta name="theme-color" content="#fff0f6">
+  <style>
+    :root {
+      --bg:#fff7fb; --card:#ffffff; --accent:#ff6b9a; --muted:#6b6b6b;
+    }
+    * { box-sizing:border-box; margin:0; padding:0 }
+    html,body {
+      height:100%; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      color:#222; background:linear-gradient(180deg,#fff7fb 0%,#ffffff 60%);
+    }
+    .wrap { max-width:820px; margin:18px auto; padding:12px }
+    .stage { background:var(--card); border-radius:18px; box-shadow:0 12px 40px rgba(0,0,0,0.08); overflow:hidden; position:relative }
+    .viewport { height:calc(100vh - 120px); min-height:420px; display:flex; align-items:center; justify-content:center; padding:14px; position:relative }
+
+    .panel { 
+      position:absolute; inset:0; 
+      display:flex; flex-direction:column; align-items:center; justify-content:center; 
+      padding:18px; transition:opacity 700ms ease, transform 700ms ease 
+    }
+    .panel.hidden { opacity:0; pointer-events:none; transform:translateY(16px) }
+
+    .cover h1 { font-size:22px; margin:0 0 10px }
+    .cover p { margin:0 0 18px; color:var(--muted) }
+    .btn { background:var(--accent); color:#fff; border:none; padding:12px 16px; border-radius:12px; font-weight:700; cursor:pointer; box-shadow:0 8px 20px rgba(255,107,154,0.18) }
+
+    /* Surat */
+    .letter { max-width:760px; align-items:flex-start }
+    .paper-wrap { flex:1; width:100%; max-width:560px; display:flex; flex-direction:column; }
+    .paper { 
+      background:#fff; padding:18px; border-radius:12px; 
+      box-shadow:0 8px 20px rgba(0,0,0,0.06); 
+      width:100%; flex:1; overflow-y:auto; 
+      -webkit-overflow-scrolling:touch; /* smooth scroll di HP */
+    }
+    .paper h2 { margin:0 0 8px; font-size:20px; color:#ff4d86 }
+    .paper p { margin:0; color:#444; line-height:1.45; font-size:15px }
+    .paper-controls { display:flex; gap:10px; justify-content:center; margin-top:14px }
+
+    /* Foto Echa */
+    .photo-frame { width:100%; max-width:560px; height:360px; border-radius:14px; overflow:hidden; background:linear-gradient(135deg,#fff,#ffeef6); display:flex; flex-direction:column; align-items:center; justify-content:center; border:6px solid rgba(255,223,233,0.6) }
+    .photo-frame img { width:100%; height:100%; object-fit:cover }
+    .caption { margin-top:8px; font-size:16px; font-weight:600; color:#ff4d86; text-align:center }
+
+    /* Grid meme */
+    .meme-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; width:100%; max-width:560px }
+    .meme-grid img { width:100%; height:150px; object-fit:contain; border-radius:12px; background:#fdf0f5 }
+
+    /* Animasi bunga & kupu-kupu */
+    .effects { position:absolute; inset:0; pointer-events:none; overflow:hidden }
+    .shape { position:absolute; width:40px; height:40px; opacity:0; will-change:transform,opacity }
+    .shape svg { width:100%; height:100% }
+
+    @keyframes float1 { 0%{opacity:0; transform:translate(-10vh,60vh) scale(0.5) rotate(0)} 20%{opacity:1} 60%{transform:translate(50vw,20vh) scale(1) rotate(180deg)} 100%{opacity:0; transform:translate(110vw,-20vh) scale(0.5) rotate(360deg)} }
+    @keyframes float2 { 0%{opacity:0; transform:translate(10vw,100vh) scale(0.5) rotate(0)} 20%{opacity:1} 50%{transform:translate(70vw,40vh) scale(1.2) rotate(200deg)} 100%{opacity:0; transform:translate(120vw,-30vh) scale(0.4) rotate(400deg)} }
+    @keyframes float3 { 0%{opacity:0; transform:translate(-20vw,80vh) scale(0.5) rotate(0)} 20%{opacity:1} 60%{transform:translate(60vw,10vh) scale(1) rotate(-200deg)} 100%{opacity:0; transform:translate(130vw,-40vh) scale(0.4) rotate(-360deg)} }
+
+    .shape.fly-1 { animation:float1 2.2s linear forwards }
+    .shape.fly-2 { animation:float2 2.4s linear forwards }
+    .shape.fly-3 { animation:float3 2.6s linear forwards }
+
+    .controls { display:flex; gap:10px; margin-top:14px; justify-content:center }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="stage">
+      <div class="viewport">
+
+        <!-- Cover -->
+        <div id="panel-cover" class="panel cover">
+          <div style="text-align:center">
+            <h1>Untuk Echa 🎉</h1>
+            <p>Pencet tombol nextnyaa!!!</p>
+            <div class="controls">
+              <button data-action="next" class="btn">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Surat -->
+        <div id="panel-letter" class="panel letter hidden">
+          <div class="paper-wrap">
+            <div class="paper">
+              <h2>Happy Birthday, Echa!</h2>
+              <p>Selamat Ulang Tahun Echaaa 🎂✨ <br> 
+                Sekarang echa sudah beranjak tambah dewasa lagii, sudah kepala duaa wawww keren sekaliii 
+                temanku inii. Ga gampang lo bisa sampe sini tuu, jadi aku bangga banget sama echaa, ya 
+                meskipun aku engga 24 jam sama kamu tapi aku tau klo echa tu orangnya kerja keras banget 
+                bahkan aku yang cuma liat di story ig aja kek waw echa lagi persiapan buat ujian, lagi praktikum, 
+                bahkan waktu echa main gitar tu keren banget!! suaranya juga bagus bangettt!! (aku cuma bisa liat dari 
+                ig mu cha ehehe, tentang keseharianmu gimana) pokoknya keren banget dehh. Ya dengan bertambah umur 
+                ini aku doakan yang terbaik buat echaa, panjang umur, sehat selalu, imannya makin diperkuat, memperoleh 
+                apa yang diinginkan, dan lainnyaa. Semangat juga cha buat kuliahnyaa, ya ga se enak masa sma sii cuma kau 
+                tau kamu pasti bisa!!. Bersyukur juga kamu ketemu temen temen yang cocok sama kamuu dan itu bisa bikin kuliah 
+                jadi tempat yang seru. Ayo kapan kapan mainn ber-empat lagiiii, aku kangen banget sama kalian, kadang diajak main 
+                akunya yang gabisa, jadi maaf bangett. Aku dapet pencapaian baru nihh, yang kemaren cuma bisa kirim heart aja sekarang 
+                aku bisa bikin kaya gini, dan kamu yang pertama lo chaa. EHEHE udah lama ga bikin surat cha jadi aku sendiri ga tau ini 
+                ngetik apa tapi aku percaya kamu paham ko (harus paham) wwkwkw.
+                <br><br>
+                Kalau butuh apa apa bilang juga ya chaa, aku sayang ECHAAA 💖
+              </p>
+            </div>
+            <div class="paper-controls">
+              <button data-action="prev" class="btn">Previous</button>
+              <button data-action="next" class="btn">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto Echa -->
+        <div id="panel-photo" class="panel hidden">
+          <div>
+            <div class="photo-frame">
+              <img src="photo Echa.jpg" alt="Foto Echa">
+            </div>
+            <p class="caption">📸 Foto bersama Echa</p>
+            <div class="controls">
+              <button data-action="prev" class="btn">Previous</button>
+              <button data-action="next" class="btn">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto Meme -->
+        <div id="panel-meme" class="panel hidden">
+          <div style="text-align:center;width:100%">
+            <h2 style="margin-top:0;color:#ff4d86"></h2>
+            <div class="meme-grid">
+              <img src="echa.jpg" alt="Meme 1">
+              <img src="echa2.jpg" alt="Meme 2">
+              <img src="echa3.jpg" alt="Meme 3">
+              <img src="echa4.jpg" alt="Meme 4">
+            </div>
+            <div class="controls">
+              <button data-action="prev" class="btn">Previous</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layer efek animasi -->
+        <div id="effectLayer" class="effects" aria-hidden="true"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const panels = [
+      document.getElementById('panel-cover'),
+      document.getElementById('panel-letter'),
+      document.getElementById('panel-photo'),
+      document.getElementById('panel-meme')
+    ];
+    const effectLayer = document.getElementById('effectLayer');
+    let current = 0;
+
+    function showPanel(index){
+      panels.forEach((p,i)=> p.classList.toggle('hidden', i!==index));
+      current = index;
+    }
+
+    function playEffects(done){
+      effectLayer.innerHTML = '';
+      for(let i=1;i<=6;i++){ 
+        const s = document.createElement('div');
+        s.className = 'shape fly-'+((i%3)+1);
+        s.innerHTML = (i%2===0)? butterflySVG(i): flowerSVG(i);
+        effectLayer.appendChild(s);
+      }
+      setTimeout(()=>{ effectLayer.innerHTML=''; if(done) done(); },2600);
+    }
+
+    function butterflySVG(i){
+      const colors=['#ff6b9a','#ffb3c7','#ffd166'];
+      const c=colors[i%colors.length];
+      return `<svg viewBox="0 0 64 64"><g transform="translate(32,32)"><path d="M-2 -4 C -18 -28 -40 -10 -20 -2 C -8 2 -2 -4 -2 -4 Z" fill="${c}" opacity="0.95"/><path d="M2 -4 C 18 -28 40 -10 20 -2 C 8 2 2 -4 2 -4 Z" fill="${c}" opacity="0.8"/><circle cx="0" cy="0" r="3" fill="#4b2e59"/></g></svg>`;
+    }
+
+    function flowerSVG(i){
+      const colors=['#ff6b9a','#ffb3c7','#ffd166','#9be564'];
+      const c=colors[i%colors.length];
+      return `<svg viewBox="0 0 64 64"><g transform="translate(32,32)"><circle cx="0" cy="0" r="6" fill="#4b2e59"/><circle cx="0" cy="-14" r="10" fill="${c}"/><circle cx="14" cy="0" r="10" fill="${c}"/><circle cx="0" cy="14" r="10" fill="${c}"/><circle cx="-14" cy="0" r="10" fill="${c}"/></g></svg>`;
+    }
+
+    document.body.addEventListener('click', e=>{
+      if(e.target.matches('[data-action="next"]') && current < panels.length-1){
+        playEffects(()=> showPanel(current+1));
+      }
+      if(e.target.matches('[data-action="prev"]') && current > 0){
+        showPanel(current-1);
+      }
+    });
+
+    showPanel(0);
+  </script>
+</body>
+</html>
